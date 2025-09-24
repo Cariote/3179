@@ -11,7 +11,7 @@
         },
         {
         "data": {
-                "url": "./data/ne_110m.json",
+                "url": "https://raw.githubusercontent.com/Cariote/3179/refs/heads/homework-week9/data/ne_110m.json",
                 "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
             },
             "transform": [
@@ -19,7 +19,7 @@
                     "lookup": "properties.ISO_A3_EH",
                     "from": {
                         "data": {
-                            "url": "./data/ITU_DH_HH_COMP.csv"
+                            "url": "https://raw.githubusercontent.com/Cariote/3179/refs/heads/homework-week9/data/ITU_DH_HH_COMP.csv"
                         },
                         "key": "REF_AREA",
                         "fields": ["OBS_VALUE"]
@@ -54,14 +54,14 @@
         },
         {
         "data": {
-                "url": "./data/ne_110m.json",
+                "url": "https://raw.githubusercontent.com/Cariote/3179/refs/heads/homework-week9/data/ne_110m.json",
                 "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
             },
             "transform": [
                 {
                 "lookup": "properties.ISO_A3_EH",
                 "from": {
-                    "data": {"url": "./data/ITU_DH_HH_COMP.csv"},
+                    "data": {"url": "https://raw.githubusercontent.com/Cariote/3179/refs/heads/homework-week9/data/ITU_DH_HH_COMP.csv"},
                     "key": "REF_AREA",
                     "fields": ["OBS_VALUE"]
                 }
@@ -81,13 +81,13 @@
         },
         {
         "data": {
-            "url": "./data/tiny_countries.csv"
+            "url": "https://raw.githubusercontent.com/Cariote/3179/refs/heads/homework-week9/data/tiny_countries.csv"
         },
         "transform": [
             {
             "lookup": "ISO_A3",
             "from": {
-                "data": {"url": "./data/ITU_DH_HH_COMP.csv"},
+                "data": {"url": "https://raw.githubusercontent.com/Cariote/3179/refs/heads/homework-week9/data/ITU_DH_HH_COMP.csv"},
                 "key": "REF_AREA",
                 "fields": ["OBS_VALUE"]
             }
