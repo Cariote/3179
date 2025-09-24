@@ -11,7 +11,7 @@
         },
         {
         "data": {
-                "url": "ne_110m.json",
+                "url": "./data/ne_110m.json",
                 "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
             },
             "transform": [
@@ -19,7 +19,7 @@
                     "lookup": "properties.ISO_A3_EH",
                     "from": {
                         "data": {
-                            "url": "ITU_DH_HH_COMP.csv"
+                            "url": "./data/ITU_DH_HH_COMP.csv"
                         },
                         "key": "REF_AREA",
                         "fields": ["OBS_VALUE"]
@@ -54,14 +54,14 @@
         },
         {
         "data": {
-                "url": "ne_110m.json",
+                "url": "./data/ne_110m.json",
                 "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
             },
             "transform": [
                 {
                 "lookup": "properties.ISO_A3_EH",
                 "from": {
-                    "data": {"url": "ITU_DH_HH_COMP.csv"},
+                    "data": {"url": "./data/ITU_DH_HH_COMP.csv"},
                     "key": "REF_AREA",
                     "fields": ["OBS_VALUE"]
                 }
@@ -81,13 +81,13 @@
         },
         {
         "data": {
-            "url": "tiny_countries.csv"
+            "url": "./data/tiny_countries.csv"
         },
         "transform": [
             {
             "lookup": "ISO_A3",
             "from": {
-                "data": {"url": "ITU_DH_HH_COMP.csv"},
+                "data": {"url": "./data/ITU_DH_HH_COMP.csv"},
                 "key": "REF_AREA",
                 "fields": ["OBS_VALUE"]
             }
