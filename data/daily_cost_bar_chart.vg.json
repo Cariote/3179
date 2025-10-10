@@ -11,7 +11,7 @@
         },
         {
         "data": {
-                "url": "https://raw.githubusercontent.com/Cariote/3179/refs/heads/homework-week9/data/ne_110m.json",
+                "url": "data/ne_110m.json",
                 "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
             },
             "transform": [
@@ -54,7 +54,7 @@
         },
         {
         "data": {
-                "url": "https://raw.githubusercontent.com/Cariote/3179/refs/heads/homework-week9/data/ne_110m.json",
+                "url": "data/ne_110m.json",
                 "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
             },
             "transform": [

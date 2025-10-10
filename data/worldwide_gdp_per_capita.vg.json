@@ -1,0 +1,219 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 850,
+    "height": 450,
+    "title": {"text": "Worldwide GDP per Capita"},
+    "projection": {"type": "equalEarth"},
+    "params": [
+        {
+        "name": "selectedYear",
+        "value": 2024,
+        "bind": {
+            "input": "range",
+            "min": 1990,
+            "max": 2024,
+            "step": 1,
+            "name": "Select Year:"
+        }
+        }
+    ],
+    "layer": [
+        {
+            "data": {"sphere": {}},
+            "mark": {"type": "geoshape", "fill": "#a6cee3", "stroke": null}
+        },
+        {
+            "data": {
+                "url": "data/ne_110m.json",
+                "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+            },
+            "mark": {"type": "geoshape", "fill": "#d9d9d9", "stroke": "black", "strokeWidth": 0.1},
+              "transform": [
+                {"calculate": "selectedYear", "as": "SelectedYear"},
+                {"calculate": "'No data'", "as": "GDP"}
+            ],
+            "encoding": {
+                "tooltip": [
+                    {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+                    {"field": "GDP", "title": "GDP per Capita"},
+                    {"field": "SelectedYear", "title": "Year"}   
+                ]
+            }
+        },
+        {
+            "data": {
+                    "url": "data/gdp-per-capita-worldbank.csv",
+                    "format": {"type": "csv"}
+                },
+                "transform": [
+                    {"filter": "datum['GDP per capita, PPP (constant 2021 international $)'] != 0"},
+                    {"filter": "toNumber(datum.Year) == selectedYear"},
+                    {
+                        "lookup": "Code",
+                        "from": {
+                            "data": {
+                                "url": "data/ne_110m.json",
+                                "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+                            },
+                            "key": "properties.ISO_A3_EH",
+                            "fields": ["properties", "type", "geometry"]
+                        }
+                    },
+                    {
+                        "calculate": "datum['GDP per capita, PPP (constant 2021 international $)'] == 0 || datum['GDP per capita, PPP (constant 2021 international $)'] == null ? 'No data' : datum['GDP per capita, PPP (constant 2021 international $)']",
+                        "as": "DisplayValue"
+                    }
+                ],
+                "mark": {"type": "geoshape", "stroke": "black", "strokeWidth": 0.1, "invalid": "show"},
+                "encoding": {
+                    "shape": {
+                        "field": "geometry",
+                        "type": "geojson"
+                    },
+                    "color": {
+                            "field": "GDP per capita, PPP (constant 2021 international $)",
+                            "type": "quantitative",
+                            "scale": {
+                                    "type": "threshold",
+                                    "domain": [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000],
+                                    "range": ["#ffffe5","#f7fcb9","#d9f0a3","#addd8e","#78c679","#41ab5d","#238443","#006837","#004529", "#002529"]
+                                },
+                            "legend": {"title": "GDP per Capita (PPP) in USD"}
+                    },
+                "tooltip": [
+                    {"field": "Entity", "type": "nominal", "title": "Country"},
+                    {"field": "GDP per capita, PPP (constant 2021 international $)", "title": "GDP per Capita", "format": ".2f"},
+                    {"field": "Year", "title": "Year"}                
+                ]   
+            }
+        },
+        {
+            "data": {"graticule": true},
+            "mark": {"type": "geoshape", "stroke": "#959595", "strokeWidth": 0.3}
+        },
+        {
+            "data": {
+                "url": "data/ne_110m.json",
+                "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+            },
+            "mark": {"type": "geoshape", "fill": "transparent"},
+              "transform": [
+                {"calculate": "selectedYear", "as": "SelectedYear"},
+                {"calculate": "'No data'", "as": "GDP"}
+            ],
+            "encoding": {
+                "tooltip": [
+                    {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+                    {"field": "GDP", "title": "GDP per Capita"},
+                    {"field": "SelectedYear", "title": "Year"}   
+                ]
+            }
+        },
+        {
+            "data": {
+                    "url": "data/gdp-per-capita-worldbank.csv",
+                    "format": {"type": "csv"}
+                },
+                "transform": [
+                    {"filter": "toNumber(datum.Year) == selectedYear"},
+                    {
+                        "lookup": "Code",
+                        "from": {
+                            "data": {
+                                "url": "data/ne_110m.json",
+                                "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+                            },
+                            "key": "properties.ISO_A3_EH",
+                            "fields": ["properties", "type", "geometry"]
+                        }
+                    },
+                    {
+                        "calculate": "datum['GDP per capita, PPP (constant 2021 international $)'] == 0 || datum['GDP per capita, PPP (constant 2021 international $)'] == null ? 'No data' : datum['GDP per capita, PPP (constant 2021 international $)']",
+                        "as": "DisplayValue"
+                    }
+                ],
+                "mark": {"type": "geoshape", "fill": "transparent"},
+                "encoding": {
+                    "shape": {
+                        "field": "geometry",
+                        "type": "geojson"
+                    },
+                "tooltip": [
+                    {"field": "Entity", "type": "nominal", "title": "Country"},
+                    {"field": "GDP per capita, PPP (constant 2021 international $)", "title": "GDP per Capita", "format": ".2f"},
+                    {"field": "Year", "title": "Year"}                
+                ]   
+            }
+        },
+        {
+            "data": {
+                "url": "data/tiny_countries.csv"
+            },
+            "transform": [
+                {
+                    "calculate": "'No data'",
+                    "as": "GDP"
+                },
+                {
+                    "calculate": "selectedYear",
+                    "as": "SelectedYear"
+                }
+            ],
+            "mark": {"type": "circle", "size": 15, "stroke": "black", "strokeWidth": 0.2, "fill": "#d9d9d9"},
+            "encoding": {
+                "longitude": {"field": "lon", "type": "quantitative"},
+                "latitude": {"field": "lat", "type": "quantitative"},
+                "tooltip": [
+                    {"field": "Name", "type": "nominal", "title": "Country"},
+                    {"field": "GDP", "title": "GDP per Capita"},
+                    {"field": "SelectedYear", "title": "Year"}                
+                ]
+            }
+        },
+        {
+            "data": {
+                "url": "data/gdp-per-capita-worldbank.csv"
+            },
+            "transform": [
+                {"filter": "datum.Year == selectedYear"},
+                {
+                    "lookup": "Code",
+                    "from": {
+                        "data": {"url": "data/tiny_countries.csv"},
+                        "key": "ISO_A3",
+                        "fields": ["lat", "lon"]
+                    }
+                },
+                {
+                    "calculate": "datum['GDP per capita, PPP (constant 2021 international $)'] == 0 || datum['GDP per capita, PPP (constant 2021 international $)'] == null ? 'No data' : format(datum['GDP per capita, PPP (constant 2021 international $)'], '.2f')",
+                    "as": "DisplayValue"
+                },
+                {
+                    "calculate": "selectedYear",
+                    "as": "SelectedYear"
+                },
+                {"filter": "datum.lon != null && datum.lat != null"}
+            ],
+            "mark": {"type": "circle", "size": 15, "stroke": "black", "strokeWidth": 0.2},
+            "encoding": {
+                "longitude": {"field": "lon", "type": "quantitative"},
+                "latitude": {"field": "lat", "type": "quantitative"},
+                "color": {
+                    "field": "GDP per capita, PPP (constant 2021 international $)",
+                    "type": "quantitative",
+                    "scale": {
+                            "type": "threshold",
+                            "domain": [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000],
+                            "range": ["#ffffe5","#f7fcb9","#d9f0a3","#addd8e","#78c679","#41ab5d","#238443","#006837","#004529"]
+                        },
+                    "legend": {"title": "GDP per Capita (PPP) in USD"}
+                },
+                "tooltip": [
+                    {"field": "Entity", "type": "nominal", "title": "Country"},
+                    {"field": "DisplayValue", "title": "GDP per Capita"},
+                    {"field": "SelectedYear", "title": "Year"}                
+                ]
+            }
+        }
+    ]
+}
