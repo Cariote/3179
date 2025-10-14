@@ -4,6 +4,7 @@
   "title": "GDP per Capita vs Percentage of Households with a Computer in 2023",
   "height": "container",
   "width": "container",
+  "autosize": {"type": "fit", "contains": "padding"},
   "params": [
     {
       "name": "selectedRegion",

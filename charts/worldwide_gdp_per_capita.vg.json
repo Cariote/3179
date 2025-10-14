@@ -79,11 +79,18 @@
                                     "domain": [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000],
                                     "range": ["#ffffe5","#f7fcb9","#d9f0a3","#addd8e","#78c679","#41ab5d","#238443","#006837","#004529", "#002529"]
                                 },
-                            "legend": {"title": "GDP per Capita (PPP) in USD"}
+                            "legend": {
+                                "title": "GDP per Capita (PPP) in USD",
+                                "gradientLength": 100,
+                                "labelLimit": 40,   
+                                "titleLimit": 100,   
+                                "orient": "right",   
+                                "padding": 0            
+                            }
                     },
                 "tooltip": [
                     {"field": "Entity", "type": "nominal", "title": "Country"},
-                    {"field": "GDP per capita, PPP (constant 2021 international $)", "title": "GDP per Capita", "format": ".2f"},
+                    {"field": "GDP per capita, PPP (constant 2021 international $)", "title": "GDP per Capita (PPP)", "format": ".2f"},
                     {"field": "Year", "title": "Year"}                
                 ]   
             }
@@ -105,7 +112,7 @@
             "encoding": {
                 "tooltip": [
                     {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-                    {"field": "GDP", "title": "GDP per Capita"},
+                    {"field": "GDP", "title": "GDP per Capita (PPP)"},
                     {"field": "SelectedYear", "title": "Year"}   
                 ]
             }
@@ -141,7 +148,7 @@
                     },
                 "tooltip": [
                     {"field": "Entity", "type": "nominal", "title": "Country"},
-                    {"field": "GDP per capita, PPP (constant 2021 international $)", "title": "GDP per Capita", "format": ".2f"},
+                    {"field": "GDP per capita, PPP (constant 2021 international $)", "title": "GDP per Capita (PPP)", "format": ".2f"},
                     {"field": "Year", "title": "Year"}                
                 ]   
             }
@@ -166,7 +173,7 @@
                 "latitude": {"field": "lat", "type": "quantitative"},
                 "tooltip": [
                     {"field": "Name", "type": "nominal", "title": "Country"},
-                    {"field": "GDP", "title": "GDP per Capita"},
+                    {"field": "GDP", "title": "GDP per Capita (PPP)"},
                     {"field": "SelectedYear", "title": "Year"}                
                 ]
             }
@@ -211,7 +218,7 @@
                 },
                 "tooltip": [
                     {"field": "Entity", "type": "nominal", "title": "Country"},
-                    {"field": "DisplayValue", "title": "GDP per Capita"},
+                    {"field": "DisplayValue", "title": "GDP per Capita (PPP)"},
                     {"field": "SelectedYear", "title": "Year"}                
                 ]
             }

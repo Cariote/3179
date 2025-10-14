@@ -43,7 +43,14 @@
                                 "domain": [20, 40, 60, 80],
                                 "range": ["#fef0d9","#fdcc8a","#fc8d59","#e34a33","#b30000"]
                             },
-                        "legend": {"title": "% Households with a Computer"}
+                        "legend": {
+                            "title": "% Households with a Computer",
+                            "gradientLength": 100,
+                            "labelLimit": 40,   
+                            "titleLimit": 100,   
+                            "orient": "right",   
+                            "padding": 0              
+                        }
                         },
                     "value": "#d9d9d9"
                 }
