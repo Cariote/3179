@@ -1,0 +1,85 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": "container",
+    "width": "container",
+    "autosize": {"type": "fit", "contains": "padding"},
+    "title": "Education outcomes vs Population with computer",
+    "layer": [
+        {
+            "data": {
+                "url": "data/average-harmonized-learning-outcome-scores.csv",
+                "format": {"type":"csv"}
+            },
+            "transform": [
+                {"filter": "datum.Year == 2020"},
+                {
+                    "lookup": "Code",
+                    "from": {
+                        "data": {
+                            "url": "data/ITU_DH_HH_COMP.csv",
+                            "format": {"type": "csv"}
+                        },
+                        "key": "REF_AREA",
+                        "fields": ["OBS_VALUE"]
+                    }
+                }
+            ],
+            "mark": "point",
+            "encoding": {
+                "x": {
+                    "field": "Harmonized test scores among all students",
+                    "type": "quantitative",
+                    "scale": {"domain":[300,600]}
+                },
+                "y": {
+                    "field": "OBS_VALUE",
+                    "type": "quantitative",
+                    "title": "% of Households with a Computer"
+                },
+                "tooltip": [
+                    {"field": "Entity", "type": "nominal"},
+                    {"field": "Harmonized test scores among all students", "format": ".2f"},
+                    {"field": "OBS_VALUE", "format": ".2f", "title": "% of Population with a Computer"}
+                ]
+            }
+        },
+            {
+            "data": {
+                "url": "data/average-harmonized-learning-outcome-scores.csv",
+                "format": {"type": "csv"}
+                },
+                "transform": [
+                {
+                    "lookup": "Code",
+                    "from": {
+                        "data": {
+                            "url": "data/ITU_DH_HH_COMP.csv",
+                            "format": { "type": "csv" }
+                        },
+                        "key": "REF_AREA",
+                        "fields": ["OBS_VALUE"]
+                    }
+                },
+                {"regression": "Harmonized test scores among all students", "on": "OBS_VALUE"}
+                ],
+                "mark": {"type": "line", "color": "grey", "strokeDash": [2, 2]},
+                "encoding": {
+                "x": {
+                    "field": "Harmonized test scores among all students",
+                    "type": "quantitative",
+                    "title": "Harmonized test scores among all students"
+                },
+                "y": {
+                    "field": "OBS_VALUE",
+                    "type": "quantitative",
+                    "title": "% of Households with a Computer"
+                },
+                "tooltip": [
+                    {"field": "Entity", "type": "nominal"},
+                    {"field": "GDP per capita, PPP (constant 2021 international $)", "format": ".2f"},
+                    {"field": "OBS_VALUE", "format": ".2f", "title": "% of Population with a Computer"}
+                ]
+                }
+            }
+    ]
+}

@@ -1,7 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 800,
-    "height": 450,
+    "width": "container",
+    "height": "container",
+    "autosize": {"type": "fit", "contains": "padding"},
     "title": {"text": "Worldwide Percentage of Households with a Computer in 2023"},
     "projection": {"type": "equalEarth"},
     "layer": [

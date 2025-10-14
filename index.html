@@ -11,12 +11,107 @@
 
     <script src="js/vega_lite_vis.js"></script>
 
-    <title>Worldwide Percentage of Households with a Computer in 2023</title>
+    <title>Digitalisation and Prosperity</title>
 </head>
-
+<style>
+    .container {
+        display: grid;
+        gap: 10px;
+        text-align: center;
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+        "header header"
+        "heading1 heading1"
+        "chart1 text1"
+        "chart2 text2"
+        "text3 chart3"
+        "text4 chart4";
+    }
+    @media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "header"
+        "heading1"
+        "chart1"
+        "text1"
+        "chart2"
+        "text2"
+        "chart3"
+        "text3"
+        "chart4"
+        "text4";
+    }
+    }
+    .container > div.header {
+        grid-area: header;
+        border-bottom-style: solid;
+        border-width: 1px;
+        padding: 5px;
+    }
+    .container > div.heading1 {
+        grid-area: heading1;
+        border-bottom-style: solid;
+        border-width: 1px;
+        padding: 5px;
+    }
+    .container > div.text1 {
+        grid-area: text1;
+        font-size: small;
+        font-family: Arial, sans-serif;
+        align-content: center;
+    }
+    .container > div.text2 {
+        grid-area: text2;
+        font-size: small;
+        font-family: Arial, sans-serif;
+        align-content: center;
+    }
+    .container > div.text3 {
+        grid-area: text3;
+        font-size: small;
+        font-family: Arial, sans-serif;
+        align-content: center;
+    }
+    .container > div.text4 {
+        grid-area: text4;
+        font-size: small;
+        font-family: Arial, sans-serif;
+        align-content: center;
+    }
+    .container > div.chart1 {
+        grid-area: chart1;
+    }
+    .container > div.chart2 {
+        grid-area: chart2;
+        padding-bottom: 10%;
+    }
+    .container > div.chart3 {
+        grid-area: chart3;
+        padding-bottom: 10%;
+    }
+    .container > div.chart4 {
+        grid-area: chart4;
+    }
+    #map_chart, #gdppc_chart, #gdpcomp_chart, #compedu_chart {
+        width: 100%;
+        height: 50vh;
+    }
+</style>
 <body>
-    <div id="map_chart"></div>
-    <div id="gdppc_chart"></div>
+    <div class="container">
+        <div class="header">DOES DIGITALISATION IMPROVE SOCIOECONOMIC OUTCOMES?</div>
+        <div class="heading1">Introduction</div>
+        <div id="map_chart" class="chart1"></div>
+        <diV class="text1">TA 2023 world map of household computer ownership reveals a stark digital divide. In developed regions like North America and Europe, computer access is nearly universal. However, in vast areas of Africa and Asia, a home computer remains a luxury. This sharp contrast in digital access mirrors global inequality and poses a critical question: does closing this gap improve socioeconomic outcomes?</div>
+        <div id="gdppc_chart" class="chart2"></div>
+        <div class="text2">The wealthiest nations, shaded in deep green, are the very same ones with the highest rates of digital access at home. In contrast, regions with lower GDP directly correspond to those with the fewest computers. This stark alignment demonstrates that the 'digital divide' and the 'economic divide' are fundamentally linked. It sharpens our core question: Is technology an engine of economic prosperity, or simply a passenger on the ride?</div>
+        <div id="gdpcomp_chart" class="chart3"></div>
+        <div class="text3">This scatter plot confirms the link between wealth and technology by directly charting each country's GDP against its household computer ownership. The data shows a powerful correlation: the richer the country, the higher the rate of computer ownership. This trend is sharpest for developing nations and flattens out as wealthy countries near total saturation. While this proves the economic and digital divides are intertwined, the question of causation remains: Does wealth buy technology, or does technology create wealth?</div>
+        <div id="compedu_chart" class="chart4"></div>
+        <div class="text4">To further investigate the link between digitalization and socioeconomic outcomes, let's move beyond the broad metric of GDP and look at a cornerstone of development: education. This scatter plot compares national student test scores with household computer access. The chart reveals another clear and strong positive correlation. Countries with higher average student test scores (horizontal axis) consistently have a higher percentage of households with a computer (vertical axis).</div>
+    </div>
+    
 </body>
 
 </html>

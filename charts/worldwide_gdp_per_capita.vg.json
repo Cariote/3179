@@ -1,7 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 850,
-    "height": 450,
+    "width": "container",
+    "height": "container",
+    "autosize": {"type": "fit", "contains": "padding"},
     "title": {"text": "Worldwide GDP per Capita (PPP)"},
     "projection": {"type": "equalEarth"},
     "params": [

@@ -1,0 +1,5 @@
+https://ourworldindata.org/global-education#all-charts 
+https://databank.worldbank.org/metadataglossary/world-development-indicators/series/IT.CMP.HOUS.ZS
+https://data.worldbank.org/indicator/NY.GDP.PCAP.CD
+https://publicadministration.un.org/egovkb/Data-Center
+https://ourworldindata.org/talent-is-everywhere-opportunity-is-not
