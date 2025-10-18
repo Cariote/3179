@@ -3,3 +3,9 @@ https://databank.worldbank.org/metadataglossary/world-development-indicators/ser
 https://data.worldbank.org/indicator/NY.GDP.PCAP.CD
 https://publicadministration.un.org/egovkb/Data-Center
 https://ourworldindata.org/talent-is-everywhere-opportunity-is-not
+https://data.worldbank.org/indicator/NY.GDP.MKTP.CD
+https://data.worldbank.org/indicator/BX.GSR.CCIS.ZS
+https://ourworldindata.org/grapher/human-development-index?time=latest&overlay=download-data
+https://ourworldindata.org/grapher/labor-productivity-per-hour-pennworldtable?time=latest&overlay=download-data
+https://ourworldindata.org/internet
+https://ourworldindata.org/grapher/patent-applications-per-million?overlay=download-data

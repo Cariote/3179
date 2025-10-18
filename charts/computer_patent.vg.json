@@ -1,0 +1,87 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 400,
+  "title": "Labor Productivity and Internet Usage Rates",
+  "data": {
+    "url": "data/hdi_int_prod.csv"
+  },
+  "params": [
+    {
+        "name": "selectedCountry",
+        "value": "Malaysia",
+        "bind": {
+            "input": "select",
+            "options": [
+                "Australia",
+                "Brazil",
+                "Canada",
+                "Chile",
+                "China",
+                "France",
+                "Germany",
+                "India",
+                "Italy",
+                "Japan",
+                "Malaysia",
+                "Mexico",
+                "Netherlands",
+                "Norway",
+                "Poland",
+                "Singapore",
+                "South Korea",
+                "Sweden",
+                "United Kingdom",
+                "United States"
+            ],
+            "name": "Select Country: "
+        }
+    }
+  ],
+  "transform": [
+        {"filter": "datum.Entity == selectedCountry"}
+    ],
+  "layer": [
+    {
+        "mark": {
+        "type": "line",
+        "color": "gray"
+        },
+        "encoding": {
+        "y": {
+            "field": "Productivity",
+            "type": "quantitative",
+            "title": "Labour Productivity (Output per hour worked)"
+        },
+        "x": {
+            "field": "Internet",
+            "type": "quantitative",
+            "title": "Individuals using the Internet (% of population)"
+        },
+        "order": {"field": "Year", "type": "nominal"}
+        }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true
+      },
+      "encoding": {
+        "y": {"field": "Productivity", "type": "quantitative"},
+        "x": {"field": "Internet", "type": "quantitative"},
+        "color": {
+          "field": "Year",
+          "type": "ordinal",
+          "scale": {"scheme": "viridis"},
+          "title": "Year"
+        },
+        "tooltip": [
+          {"field": "Entity"},
+          {"field": "Year"},
+          {"field": "Productivity", "format": ".2f"},
+          {"field": "Internet", "format": ".3f"}
+        ]
+      }
+    }
+  ]
+}

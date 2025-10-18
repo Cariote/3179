@@ -3,7 +3,7 @@
     "width": "container",
     "height": 400,
     "autosize": {"type": "fit", "contains": "padding"},
-    "title": {"text": "Worldwide GDP per Capita (PPP)"},
+    "title": {"text": "Worldwide Internet Usage"},
     "data": {
         "url": "data/ne_110m.json",
         "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
@@ -12,11 +12,11 @@
     "params": [
         {
         "name": "selectedYear",
-        "value": 2024,
+        "value": 2020,
         "bind": {
             "input": "range",
             "min": 1990,
-            "max": 2024,
+            "max": 2022,
             "step": 1,
             "name": "Select Year:"
         }
@@ -43,11 +43,10 @@
         },
         {
             "data": {
-                    "url": "data/gdp-per-capita-worldbank.csv",
+                    "url": "data/internet.csv",
                     "format": {"type": "csv"}
                 },
                 "transform": [
-                    {"filter": "datum['GDP per capita, PPP (constant 2021 international $)'] != 0"},
                     {"filter": "toNumber(datum.Year) == selectedYear"},
                     {
                         "lookup": "Code",
@@ -61,7 +60,7 @@
                         }
                     },
                     {
-                        "calculate": "datum['GDP per capita, PPP (constant 2021 international $)'] == 0 || datum['GDP per capita, PPP (constant 2021 international $)'] == null ? 'No data' : datum['GDP per capita, PPP (constant 2021 international $)']",
+                        "calculate": "datum['Individuals using the Internet (% of population)'] == 0 || datum['Individuals using the Internet (% of population)'] == null ? 'No data' : datum['Individuals using the Internet (% of population)']",
                         "as": "DisplayValue"
                     }
                 ],
@@ -72,15 +71,15 @@
                         "type": "geojson"
                     },
                     "color": {
-                            "field": "GDP per capita, PPP (constant 2021 international $)",
+                            "field": "Individuals using the Internet (% of population)",
                             "type": "quantitative",
                             "scale": {
                                     "type": "threshold",
-                                    "domain": [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000],
-                                    "range": ["#fcfbfd", "#efedf5", "#dadaeb", "#bcbddc", "#9e9ac8", "#807dba", "#6a51a3", "#54278f", "#3f007d", "#2c005c"]
+                                    "domain": [20, 40, 60, 80],
+                                    "scheme": "bluegreen"
                                 },
                             "legend": {
-                                "title": "GDP per Capita (PPP) in USD",
+                                "title": "% of population",
                                 "gradientLength": 100,
                                 "labelLimit": 40,   
                                 "titleLimit": 100,   
@@ -90,7 +89,7 @@
                     },
                 "tooltip": [
                     {"field": "Entity", "type": "nominal", "title": "Country"},
-                    {"field": "GDP per capita, PPP (constant 2021 international $)", "title": "GDP per Capita (PPP)", "format": ".2f"},
+                    {"field": "Individuals using the Internet (% of population)", "title": "GDP per Capita (PPP)", "format": ".2f"},
                     {"field": "Year", "title": "Year"}                
                 ]   
             }
@@ -119,7 +118,7 @@
         },
         {
             "data": {
-                    "url": "data/gdp-per-capita-worldbank.csv",
+                    "url": "data/internet.csv",
                     "format": {"type": "csv"}
                 },
                 "transform": [
@@ -136,7 +135,7 @@
                         }
                     },
                     {
-                        "calculate": "datum['GDP per capita, PPP (constant 2021 international $)'] == 0 || datum['GDP per capita, PPP (constant 2021 international $)'] == null ? 'No data' : datum['GDP per capita, PPP (constant 2021 international $)']",
+                        "calculate": "datum['Individuals using the Internet (% of population)'] == 0 || datum['Individuals using the Internet (% of population)'] == null ? 'No data' : datum['Individuals using the Internet (% of population)']",
                         "as": "DisplayValue"
                     }
                 ],
@@ -148,7 +147,7 @@
                     },
                 "tooltip": [
                     {"field": "Entity", "type": "nominal", "title": "Country"},
-                    {"field": "GDP per capita, PPP (constant 2021 international $)", "title": "GDP per Capita (PPP)", "format": ",.2f"},
+                    {"field": "Individuals using the Internet (% of population)", "title": "Individuals using the Internet (% of population)", "format": ".2f"},
                     {"field": "Year", "title": "Year"}                
                 ]   
             }
@@ -160,7 +159,7 @@
             "transform": [
                 {
                     "calculate": "'No data'",
-                    "as": "GDP"
+                    "as": "Individuals using the Internet (% of population)"
                 },
                 {
                     "calculate": "selectedYear",
@@ -173,14 +172,14 @@
                 "latitude": {"field": "lat", "type": "quantitative"},
                 "tooltip": [
                     {"field": "Name", "type": "nominal", "title": "Country"},
-                    {"field": "GDP", "title": "GDP per Capita (PPP)", "format": ",.2f"},
+                    {"field": "Individuals using the Internet (% of population)", "title": "Individuals using the Internet (% of population)", "format": ".2f"},
                     {"field": "SelectedYear", "title": "Year"}                
                 ]
             }
         },
         {
             "data": {
-                "url": "data/gdp-per-capita-worldbank.csv"
+                "url": "data/internet.csv"
             },
             "transform": [
                 {"filter": "datum.Year == selectedYear"},
@@ -193,7 +192,7 @@
                     }
                 },
                 {
-                    "calculate": "datum['GDP per capita, PPP (constant 2021 international $)'] == 0 || datum['GDP per capita, PPP (constant 2021 international $)'] == null ? 'No data' : format(datum['GDP per capita, PPP (constant 2021 international $)'], '.2f')",
+                    "calculate": "datum['Individuals using the Internet (% of population)'] == 0 || datum['Individuals using the Internet (% of population)'] == null ? 'No data' : format(datum['Individuals using the Internet (% of population)'], '.2f')",
                     "as": "DisplayValue"
                 },
                 {
@@ -207,18 +206,18 @@
                 "longitude": {"field": "lon", "type": "quantitative"},
                 "latitude": {"field": "lat", "type": "quantitative"},
                 "color": {
-                    "field": "GDP per capita, PPP (constant 2021 international $)",
+                    "field": "Individuals using the Internet (% of population)",
                     "type": "quantitative",
                     "scale": {
                             "type": "threshold",
-                            "domain": [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 90000],
-                            "range": ["#ffffe5","#f7fcb9","#d9f0a3","#addd8e","#78c679","#41ab5d","#238443","#006837","#004529"]
+                            "domain": [20, 40, 60, 80],
+                            "scheme": "bluegreen"
                         },
-                    "legend": {"title": "GDP per Capita (PPP) in USD"}
+                    "legend": {"title": "Individuals using the Internet (% of population)"}
                 },
                 "tooltip": [
                     {"field": "Entity", "type": "nominal", "title": "Country"},
-                    {"field": "DisplayValue", "title": "GDP per Capita (PPP)", "format": ",.2f"},
+                    {"field": "DisplayValue", "title": "Individuals using the Internet (% of population)", "format": ".2f"},
                     {"field": "SelectedYear", "title": "Year"}                
                 ]
             }

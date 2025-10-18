@@ -4,6 +4,17 @@
     "width": "container",
     "autosize": {"type": "fit", "contains": "padding"},
     "title": "Education outcomes vs Population with computer",
+    "params": [
+        {
+        "name": "selectedRegion",
+        "value": "All",
+        "bind": {
+            "input": "select",
+            "options": ["All", "Asia", "Europe", "Africa", "Americas", "Oceania"],
+            "name": "Select Region: "
+        }
+        }
+    ],
     "layer": [
         {
             "data": {
@@ -12,6 +23,7 @@
             },
             "transform": [
                 {"filter": "datum.Year == 2020"},
+                {"filter": "selectedRegion == 'All' || datum.region == selectedRegion"},
                 {
                     "lookup": "Code",
                     "from": {
@@ -22,22 +34,39 @@
                         "key": "REF_AREA",
                         "fields": ["OBS_VALUE"]
                     }
+                },
+                {
+                    "lookup": "Code",
+                    "from": {
+                        "data": {
+                            "url": "data/continents2.csv",
+                            "format": {"type": "csv"}
+                        },
+                        "key": "alpha-3",
+                        "fields": ["region"]
+                    }
                 }
             ],
-            "mark": "point",
+            "mark": {
+                "type": "point",
+                "filled": true,
+                "opacity": 0.7
+            },
             "encoding": {
                 "x": {
                     "field": "Harmonized test scores among all students",
                     "type": "quantitative",
-                    "scale": {"domain":[300,600]}
+                    "scale": {"domain":[300,600]},
+                    "title": "Harmonized Test Scores Among All Students"
                 },
                 "y": {
                     "field": "OBS_VALUE",
                     "type": "quantitative",
                     "title": "% of Households with a Computer"
                 },
+                "color": {"field": "region", "type": "nominal", "title": "World regions"},
                 "tooltip": [
-                    {"field": "Entity", "type": "nominal"},
+                    {"field": "Entity", "type": "nominal", "title": "Country"},
                     {"field": "Harmonized test scores among all students", "format": ".2f"},
                     {"field": "OBS_VALUE", "format": ".2f", "title": "% of Population with a Computer"}
                 ]
@@ -49,6 +78,7 @@
                 "format": {"type": "csv"}
                 },
                 "transform": [
+                {"filter": "selectedRegion == 'All' || datum.region == selectedRegion"},
                 {
                     "lookup": "Code",
                     "from": {
@@ -60,6 +90,17 @@
                         "fields": ["OBS_VALUE"]
                     }
                 },
+                {
+                    "lookup": "Code",
+                    "from": {
+                        "data": {
+                            "url": "data/continents2.csv",
+                            "format": {"type": "csv"}
+                        },
+                        "key": "alpha-3",
+                        "fields": ["region"]
+                    }
+                },
                 {"regression": "Harmonized test scores among all students", "on": "OBS_VALUE"}
                 ],
                 "mark": {"type": "line", "color": "grey", "strokeDash": [2, 2]},
@@ -67,7 +108,7 @@
                 "x": {
                     "field": "Harmonized test scores among all students",
                     "type": "quantitative",
-                    "title": "Harmonized test scores among all students"
+                    "title": "Harmonized Test Scores Among All Students"
                 },
                 "y": {
                     "field": "OBS_VALUE",
@@ -75,7 +116,7 @@
                     "title": "% of Households with a Computer"
                 },
                 "tooltip": [
-                    {"field": "Entity", "type": "nominal"},
+                    {"field": "Entity", "type": "nominal", "title": "Country"},
                     {"field": "GDP per capita, PPP (constant 2021 international $)", "format": ".2f"},
                     {"field": "OBS_VALUE", "format": ".2f", "title": "% of Population with a Computer"}
                 ]

@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
     <script src="js/vega_lite_vis.js"></script>
 
@@ -27,16 +28,34 @@
         </div>
         <div class="container2">
             <div id="gdppc_chart" class="chart2"></div>
-            <div class="text2">The wealthiest nations, shaded in deep green, are the very same ones with the highest rates of digital access at home. In contrast, regions with lower GDP directly correspond to those with the fewest computers.<p>This stark alignment demonstrates that the 'digital divide' and the 'economic divide' are fundamentally linked. It sharpens our core question:</p>  <strong>Is technology an engine of economic prosperity, or simply a passenger on the ride?</strong></div>
-            
+            <div class="text2">The wealthiest nations, shaded in deep purple, are the very same ones with the highest rates of digital access at home. In contrast, regions with lower GDP directly correspond to those with the fewest computers.<p>This stark alignment demonstrates that the 'digital divide' and the 'economic divide' are fundamentally linked. It sharpens our core question:</p>  <strong>Is technology an engine of economic prosperity, or simply a passenger on the ride?</strong></div>
+        </div>
+        <div class="container">
+            <div id="intmap" class="chart1"></div>
+            <diV class="text1">This map sets the stage for our exploration of how technology has an impact, by visualizing the very foundation of the modern digital economy: worldwide internet usage. <p>As of 2020, it reveals a <strong>stark digital divide</strong>, with nations in dark green showing high connectivity, the prerequisite for a tech-driven economy, while others in light green are still building that base.</p> This snapshot captures the unequal starting line in the global race to turn <strong>technological adoption</strong> into <strong>economic prosperity</strong>.</div>
         </div>
         <div class="heading1">Comparing the Data</div>
         <div class="container3">
             <div id="gdpcomp_chart" class="chart3"></div>
-            <div class="text3">This scatter plot confirms the link between wealth and technology by directly charting each country's GDP against its household computer ownership. The data shows a powerful correlation: the richer the country, the higher the rate of computer ownership. This trend is sharpest for developing nations and flattens out as wealthy countries near total saturation. While this proves the economic and digital divides are intertwined, the question of causation remains: Does wealth buy technology, or does technology create wealth?</div>
+            <div class="text3">This scatter plot confirms the link between wealth and technology by directly charting each country's GDP against its household computer ownership. The data shows a powerful correlation: <strong>the richer the country, the higher the rate of computer ownership</strong>. <p>This trend is sharpest for developing nations and flattens out as wealthy countries near total saturation.</p><p>While this proves the economic and digital divides are intertwined, the question of causation remains: <p><strong>Does wealth buy technology, or does technology create wealth?</strong></p></div>
             <div id="compedu_chart" class="chart4"></div>
-            <div class="text4">To further investigate the link between digitalization and socioeconomic outcomes, let's move beyond the broad metric of GDP and look at a cornerstone of development: education. This scatter plot compares national student test scores with household computer access. The chart reveals another clear and strong positive correlation. Countries with higher average student test scores (horizontal axis) consistently have a higher percentage of households with a computer (vertical axis).</div>
+            <div class="text4">To further investigate the link between digitalization and socioeconomic outcomes, let's move beyond the broad metric of GDP and look at a cornerstone of development: education.<p>This scatter plot compares national student test scores with household computer access. The chart reveals another clear and strong positive correlation.</p><p>Countries with <strong>higher average student test scores</strong> (horizontal axis) consistently have a <strong>higher percentage of households with a computer</strong> (vertical axis).</p></div>
         </div>
+        <div class="heading1">Wealth or Technology First?</div>
+        <div class="container">
+            <div id="techgdp_chart" class="chart1"></div>
+            <div class="text1"><p>This interactive dual-line chart, visualizes the annual growth rates of a country's <strong>Information and Communication Technology (ICT)</strong> exports and its overall <strong>Gross Domestic Product (GDP)</strong> from 2005 to 2024.</p>The chart aims to explore the relationship between <strong>technological advancement</strong> (represented by ICT exports) and <strong>economic prosperity</strong> (represented by GDP), allowing users to <strong>investigate whether one consistently leads the other</strong>.</div>
+        </div>
+        <div class="container">
+            <div id="hdiprod_chart" class="chart1"></div>
+            <div class="text1">The chart reveals a strong positive correlation: <strong>more productive economies</strong> almost always correspond with <strong>healthier, more educated societies</strong>. The bubbles for the most developed nations in the top-right quadrant are consistently the largest, showing that widespread internet adoption is a key feature of a modern, successful economy.<p>Ultimately, the visualization suggests that wealth, technology, and human well-being are not sequential but are part of a <strong>reinforcing cycle of progress</strong>.</p></div>
+        </div>
+        <div class="container">
+            <div id="comppat_chart" class="chart1"></div>
+            <div class="text1">This chart tells the story of a nation's digital maturation and its impact on economic output.<p>The path begins with the <strong>Early Adoption Phase</strong> (low internet use, slow progress), where initial investment in infrastructure does not immediately translate into higher Labour Productivity. This leads to the <strong>Digital Plateau</strong> (moderate internet use, stable productivity), representing the period when the workforce is integrating new tools.</p> Finally, once Internet Usage passes a <strong>critical mass</strong>, the path turns sharply toward the upper-right corner, <strong>the Digital Leap</strong>, showing that widespread digital access becomes the primary accelerator for Labour Productivity, driving the economy into a state of <strong>high efficiency and greater output</strong>.</div>
+        </div>
+        <div class="heading1">Conclusion</div>
+            <div class="conclusion">The growth of ICT Exports and GDP are strongly correlated, rising and falling in near-perfect lockstep in response to the same broader economic forces. The technology sector (ICT Exports) is visibly more volatile, experiencing higher peaks and deeper troughs than the overall economy. This suggests that for this country, it's not a question of which comes "first"; rather, technology and wealth are two intertwined parts of the same economic engine.</div>
     </div>
     <div class="footer"><p>© 2025 Visualisation 2 created by Clarence Ang Jia Ler (33307873) for FIT3179</p><p>Datasets: <a href="https://data360files.worldbank.org/data360-data/data/ITU_DH/ITU_DH_HH_COMP.csv">ITU</a>, <a href="https://api.worldbank.org/v2/en/indicator/NY.GDP.PCAP.CD?downloadformat=csv">World Bank</a>, <a href="https://ourworldindata.org/global-education#all-charts">Our World in Data</a></p></div>
 </body>

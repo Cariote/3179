@@ -14,6 +14,7 @@
     text-align: center;
     grid-template-columns: 75% 25%;
     margin-bottom: 4%;
+    padding-bottom: 1%;
     grid-template-areas:
     "chart2 text2";
 }
@@ -22,11 +23,48 @@
     display: grid;
     gap: 10px;
     text-align: center;
-    grid-template-columns: 50% 50%;
-    margin-bottom: 4%;
+    grid-template-columns: 75% 25%;
+    padding-bottom: 5%;
     grid-template-areas:
-    "chart3 chart4"
-    "text3 text4";
+    "chart3 text3"
+    "chart4 text4";
+}
+
+@media (max-width: 768px) {
+    .container {
+        display: grid;
+        gap: 10px;
+        text-align: center;
+        grid-template-columns: 1fr;
+        margin-bottom: 2%;
+        grid-template-areas:
+        "chart1"
+        "text1";
+    }
+
+    .container2 {
+        display: grid;
+        gap: 10px;
+        text-align: center;
+        grid-template-columns: 1fr;
+        margin-bottom: 4%;
+        grid-template-areas:
+        "chart2"
+        "text2";
+    }
+
+    .container3 {
+        display: grid;
+        gap: 10px;
+        text-align: center;
+        grid-template-columns: 50% 50%;
+        margin-bottom: 4%;
+        grid-template-areas:
+        "chart3"
+        "text3"
+        "chart4"
+        "text4";
+    }
 }
 
 .body {
@@ -56,12 +94,35 @@ body {
     font-size: 2rem;
     font-family: Cormorant, sans-serif;
 }
+
 .subheading {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(67, 67, 67);
     font-size:small;
 }
+
+.conclusion {
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(67, 67, 67);
+    font-size:small;
+    margin: 0% 40% 2%;
+    position: relative;
+    padding-left: 2%;
+}
+
+.conclusion::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    left: 0;
+    width: 3px;
+    background-color: rgb(70, 70, 70);
+    border-radius: 4px;
+}
+
 .container > div.heading1 {
     grid-area: heading1;
     border-bottom-style: solid;
@@ -74,62 +135,101 @@ body {
     font-family: Lato, sans-serif;
     align-content: center;
     text-align: left;
+    position: relative;
+    padding-left: 5%;
 }
+
+.container > div.text1::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    left: 0;
+    width: 3px;
+    background-color: rgb(70, 70, 70);
+    border-radius: 4px;
+}
+
 .container2 > div.text2 {
     grid-area: text2;
     font-size: 14px;
     font-family: Lato, sans-serif;
     align-content: center;
     text-align: left;
-
+    position: relative;
+    padding-left: 5%;
 }
+
+.container2 > div.text2::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    left: 0;
+    width: 3px;
+    background-color: rgb(70, 70, 70);
+    border-radius: 4px;
+}
+
 .container3 > div.text3 {
     grid-area: text3;
     font-size: 14px;
     font-family: Lato, sans-serif;
     align-content: center;
     text-align: left;
+    position: relative;
+    padding-left: 5%;
 }
+
+.container3 > div.text3::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    left: 0;
+    width: 3px;
+    background-color: rgb(70, 70, 70);
+    border-radius: 4px;
+}
+
 .container3 > div.text4 {
     grid-area: text4;
     font-size: 14px;
     font-family: Lato, sans-serif;
     align-content: center;
     text-align: left;
+    position: relative;
+    padding-left: 5%;
 }
+
+.container3 > div.text4::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    left: 0;
+    width: 3px;
+    background-color: rgb(70, 70, 70);
+    border-radius: 4px;
+}
+
 .container > div.chart1 {
     grid-area: chart1;
 }
-.container > div.chart1::after {
-    content: "";
-    position: absolute;
-    top: 20%;
-    bottom: 20%;
-    right: 0;
-    width: 3px;
-    background-color: rgb(70, 70, 70);
-    border-radius: 4px;
-}
+
 .container2 > div.chart2 {
     grid-area: chart2;
 }
-.container2 > div.chart2::after {
-    content: "";
-    position: absolute;
-    top: 20%;
-    bottom: 20%;
-    right: 0;
-    width: 3px;
-    background-color: rgb(70, 70, 70);
-    border-radius: 4px;
-}
+
 .container3 > div.chart3 {
     grid-area: chart3;
-    padding-bottom: 10%;
+    margin-bottom: 5%;
 }
+
 .container3 > div.chart4 {
     grid-area: chart4;
 }
+
 #map_chart, #gdppc_chart, #gdpcomp_chart, #compedu_chart {
     width: 100%;
     height: 50vh;
@@ -151,8 +251,9 @@ body {
 
 .vega-bind {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   font-family: Arial, sans-serif;
   font-size: 13px;
@@ -162,7 +263,6 @@ body {
   margin: 0;
   color: #333;
 }
-
 
 .vega-bind select {
   appearance: none;             /* remove default browser styling */
@@ -190,6 +290,6 @@ box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
 
 .vega-bind input[type=range] {
 width: 200px;
-accent-color: #4CAF50;   /* slider color */
+accent-color: #5e4caf;   /* slider color */
 cursor: pointer;
 }
