@@ -30,43 +30,6 @@
     "chart4 text4";
 }
 
-@media (max-width: 768px) {
-    .container {
-        display: grid;
-        gap: 10px;
-        text-align: center;
-        grid-template-columns: 1fr;
-        margin-bottom: 2%;
-        grid-template-areas:
-        "chart1"
-        "text1";
-    }
-
-    .container2 {
-        display: grid;
-        gap: 10px;
-        text-align: center;
-        grid-template-columns: 1fr;
-        margin-bottom: 4%;
-        grid-template-areas:
-        "chart2"
-        "text2";
-    }
-
-    .container3 {
-        display: grid;
-        gap: 10px;
-        text-align: center;
-        grid-template-columns: 50% 50%;
-        margin-bottom: 4%;
-        grid-template-areas:
-        "chart3"
-        "text3"
-        "chart4"
-        "text4";
-    }
-}
-
 .body {
     background-color: white;
     padding-left: 1%;
@@ -104,10 +67,10 @@ body {
 
 .conclusion {
     text-align: left;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Lato, sans-serif;
     color: rgb(67, 67, 67);
     font-size:small;
-    margin: 0% 40% 2%;
+    margin: 0% 35% 2%;
     position: relative;
     padding-left: 2%;
 }
@@ -292,4 +255,76 @@ box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
 width: 200px;
 accent-color: #5e4caf;   /* slider color */
 cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .container,
+    .container2 {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "chart1"
+        "text1";
+    }
+
+    .container2 {
+        grid-template-areas:
+        "chart2"
+        "text2";
+    }
+
+    .container3 {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "chart3"
+        "text3"
+        "chart4"
+        "text4";
+    }
+
+    /* reduce side padding for mobile */
+    .body {
+        padding-left: 3%;
+        padding-right: 3%;
+        margin: 1%;
+    }
+
+    /* shrink text and adjust line spacing */
+    .container > div.text1,
+    .container2 > div.text2,
+    .container3 > div.text3,
+    .container3 > div.text4 {
+        font-size: 13px;
+        line-height: 1.5;
+        padding-left: 3%;
+    }
+
+    /* narrower charts */
+    #map_chart,
+    #gdppc_chart,
+    #gdpcomp_chart,
+    #compedu_chart {
+        height: 40vh;
+        margin-bottom: 30%
+    }
+
+    /* center slider & dropdown controls */
+    .vega-bindings {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .vega-bind select,
+    .vega-bind input[type=range] {
+        width: 90%;
+    }
+
+    .conclusion {
+        text-align: left;
+        font-family: Lato, sans-serif;
+        color: rgb(67, 67, 67);
+        font-size:small;
+        position: relative;
+        margin: 0% 2% 2%;
+        padding-left: 2%;
+    }
 }

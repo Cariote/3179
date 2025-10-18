@@ -1,0 +1,58 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "height": 400,
+  "width": "container",
+  "autosize": {"type": "fit", "contains": "padding"},
+  "title": "Researchers per million and Computer Ownership",
+  "params": [
+    {
+        "name": "selectedCountry",
+        "value": "All",
+        "bind": {
+            "input": "select",
+            "options": ["All", "Albania", "Algeria", "Angola", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahrain", "Belarus", "Belgium", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Bulgaria", "Burkina Faso", "Cambodia", "Canada", "Chad", "Chile", "China", "Colombia", "Congo", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cyprus", "Czechia", "Democratic Republic of Congo", "Denmark", "Dominican Republic", "Ecuador", "Egypt", "Estonia", "Ethiopia", "Finland", "France", "Georgia", "Germany", "Ghana", "Greece", "Guatemala", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Italy", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Latvia", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Mali", "Malta", "Mauritius", "Mexico", "Moldova", "Morocco", "Mozambique", "Myanmar", "Namibia", "Netherlands", "New Zealand", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Paraguay", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saudi Arabia", "Senegal", "Serbia", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "Sweden", "Switzerland", "Syria", "Tanzania", "Thailand", "Trinidad and Tobago", "Tunisia", "Turkey", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Zambia", "Zimbabwe"],
+            "name": "Select Country: "
+        }
+    },
+    {
+      "name": "start",
+      "value": 1996,
+      "bind": {
+        "input": "range",
+        "min": 1996,
+        "max": 2022,
+        "step": 1,
+        "name": "Start Year: "
+      }
+    },
+    {
+      "name": "end",
+      "value": 2022,
+      "bind": {
+        "input": "range",
+        "min": 1960,
+        "max": 2022,
+        "step": 1,
+        "name": "End Year: "
+      }
+    }
+  ],
+  "data": {"url": "data/internet_researchers.csv", "format": {"type": "csv"}},
+  "transform": [
+    {"filter": "start <= datum.Year"},
+    {"filter": "datum.Year <= end"},
+    {"filter": "selectedCountry == 'All' || datum.Entity == selectedCountry"}
+  ],
+  "mark": {"type": "bar"},
+  "encoding": {
+    "x": {"field": "Year", "type": "nominal", "title": "Year"},
+    "y": {"field": "Researchers in R&D (per million people)", "type": "quantitative"},
+    "color": {"field": "Internet", "scale": {"scheme": "viridis"}, "title": "Internet usage per million", "type": "quantitative"},
+    "tooltip": [
+        {"field": "Entity", "title": "Country"},
+        {"field": "Year"},
+        {"field": "Researchers in R&D (per million people)", "format": ",.2f"},
+        {"field": "Internet", "title": "Individuals using the Internet (% of population)", "format": ",.2f"}
+    ]
+  }
+}

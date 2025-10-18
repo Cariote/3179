@@ -6,6 +6,7 @@ var vg_5 = "charts/tech_investment_gdp_chart.vg.json";
 var vg_6 = "charts/hdi_productivity.vg.json";
 var vg_7 = "charts/computer_patent.vg.json";
 var vg_8 = "charts/internet_map.vg.json";
+var vg_9 = "charts/researchers_comp.vg.json";
 
 vegaEmbed("#map_chart", vg_1).then(function(result) {
     // Access the Vega view instance
@@ -28,3 +29,5 @@ vegaEmbed('#hdiprod_chart', vg_6).then(function(result){}).catch(console.error);
 vegaEmbed("#comppat_chart", vg_7).then(function(result){}).catch(console.error);
 
 vegaEmbed("#intmap", vg_8).then(function(result){}).catch(console.error);
+
+vegaEmbed("#rescomp", vg_9).then(function(result){}).catch(console.error);
